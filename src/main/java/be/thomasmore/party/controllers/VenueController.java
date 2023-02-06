@@ -51,4 +51,26 @@ public class VenueController {
         model.addAttribute("venues", venues);
         return "venuelist";
     }
+
+    @GetMapping({"/venuelist/size/{filter}", "/venuelist/size"})
+    public String venueListSize(Model model, @PathVariable(required = false) String filter) {
+        if (filter==null) filter = "all";
+        if (filter.equals("s")) filter = "S";
+        if (filter.equals("m")) filter = "M";
+        if (filter.equals("l")) filter = "L";
+        if (!filter.equals("S") && !filter.equals("M") && !filter.equals("L")) filter = "all";
+        Iterable<Venue> venues;
+        if (filter.equals("all")) {
+            venues = venueRepository.findAll();
+        } else if (filter.equals("S")) {
+            venues = venueRepository.findByCapacityLessThanEqual(200);
+        } else if (filter.equals("M")) {
+            venues = venueRepository.findByCapacityIsBetween(200, 500);
+        } else {
+            venues = venueRepository.findByCapacityIsGreaterThan(500);
+        }
+        model.addAttribute("sizeFilter", filter);
+        model.addAttribute("venues", venues);
+        return "venuelist";
+    }
 }
