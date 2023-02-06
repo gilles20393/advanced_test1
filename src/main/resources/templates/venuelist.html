@@ -10,21 +10,11 @@
 <div class="freespaceforheader"></div>
 <div class="row1">
     <div class="row1content">
-        <div>
-            <h2>Venues</h2>
-            <div>
-                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/1'}">
-                    <span>venue 1</span>
-                </a>
-            </div>
-            <div>
-                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/2'}">
-                    <span>venue 2</span>
-                </a>
-            </div>
-            <div>
-                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/3'}">
-                    <span>venue 3</span>
+        <h2>venues</h2>
+        <div class="venuelist">
+            <div th:each="venue: ${venues}">
+                <a class="buttonLook mediumButton" th:href="@{|/venuedetails/${venue.id}|}">
+                    <span th:text="${venue.venueName}">venue name</span>
                 </a>
             </div>
         </div>
