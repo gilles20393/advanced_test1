@@ -46,7 +46,7 @@ public class VenueController {
     public String venueListIndoor(Model model, @PathVariable(required = false) String filter) {
         boolean boolFilter = true;
         if (filter!=null && (filter.equals("no") || filter.equals("false"))) boolFilter = false;
-        Iterable<Venue> venues = venueRepository.findByOutdoor(!boolFilter);
+        Iterable<Venue> venues = venueRepository.findByIndoor(boolFilter);
         model.addAttribute("indoorFilter", boolFilter);
         model.addAttribute("venues", venues);
         return "venuelist";
