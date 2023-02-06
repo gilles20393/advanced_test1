@@ -32,12 +32,22 @@ public class VenueController {
         return "venuelist";
     }
 
-    @GetMapping({"/venuelist/outdoor", "/venuelist/outdoor/{filter}"})
-    public String venueListOutdoorYes(Model model, @PathVariable(required = false) String filter) {
+    @GetMapping({"/venuelist/outdoor/{filter}", "/venuelist/outdoor"})
+    public String venueListOutdoor(Model model, @PathVariable(required = false) String filter) {
         boolean boolFilter = true;
         if (filter!=null && (filter.equals("no") || filter.equals("false"))) boolFilter = false;
         Iterable<Venue> venues = venueRepository.findByOutdoor(boolFilter);
         model.addAttribute("outdoorFilter", boolFilter);
+        model.addAttribute("venues", venues);
+        return "venuelist";
+    }
+
+    @GetMapping({"/venuelist/indoor/{filter}", "/venuelist/indoor"})
+    public String venueListIndoor(Model model, @PathVariable(required = false) String filter) {
+        boolean boolFilter = true;
+        if (filter!=null && (filter.equals("no") || filter.equals("false"))) boolFilter = false;
+        Iterable<Venue> venues = venueRepository.findByOutdoor(!boolFilter);
+        model.addAttribute("indoorFilter", boolFilter);
         model.addAttribute("venues", venues);
         return "venuelist";
     }
