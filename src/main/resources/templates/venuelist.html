@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/party.css}"/>
+    <title>Homepagina</title>
+</head>
+<body>
+<div class="nav">
+    <h1>Let's Party!</h1>
+    <div class="navbuttons">
+        <a class="buttonLook menuButton" href="/home">home</a>
+        <a class="buttonLook menuButton" href="/venuelist">venues</a>
+        <a class="buttonLook menuButton" href="/about">about</a>
+    </div>
+</div>
+<div class="freespaceforheader"></div>
+<div class="row1">
+    <div class="row1content">
+        <div>
+            <h2>Venues</h2>
+            <div>
+                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/1'}">
+                    <span>venue 1</span>
+                </a>
+            </div>
+            <div>
+                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/2'}">
+                    <span>venue 2</span>
+                </a>
+            </div>
+            <div>
+                <a class="buttonLook mediumButton" th:href="@{'/venuedetails/3'}">
+                    <span>venue 3</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
