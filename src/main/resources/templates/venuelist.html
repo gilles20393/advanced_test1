@@ -7,13 +7,20 @@
 </head>
 <body>
 <div th:replace="fragments/headerfooter :: header">Hier komt de header</div>
-<div class="freespaceforheader"></div>
 <div class="row1">
     <div class="row1content">
         <h2>venues</h2>
+        <div class="filters">
+            <div class="onefilter">
+                <div class="filtername">outdoor:</div>
+                <a class="buttonLook filterButton" href="/venuelist/outdoor/all">all</a>
+                <a class="buttonLook filterButton" href="/venuelist/outdoor/yes">yes</a>
+                <a class="buttonLook filterButton" href="/venuelist/outdoor/no">no</a>
+            </div>
+        </div>
         <div class="venuelist">
             <div th:each="venue: ${venues}">
-                <a class="buttonLook mediumButton" th:href="@{|/venuedetails/${venue.id}|}">
+                <a class="buttonLook mediumButton" th:href="@{|/venuedetails/${venue.id}}">
                     <span th:text="${venue.venueName}">venue name</span>
                 </a>
             </div>
